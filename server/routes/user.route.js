@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const{test, signupControler, signinController} = require("./controllers/user.controller")
+const { signupControler, signinController } = require("./controller/user.controller")
 
-router.get("/",test)
+// router.get("/",test)
 router.post("/signup", signupControler)
 router.post("/signin", signinController)
 

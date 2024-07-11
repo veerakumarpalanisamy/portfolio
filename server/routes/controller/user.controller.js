@@ -1,15 +1,13 @@
 const bcrypt = require("bcrypt")
-const User = require("../../model/User.model")
+const User = require("../../models/User.model")
 const jwt = require("jsonwebtoken")
 
 
 const test = (req,res) => {
-    try{
-    return res.send("user route");
-    } catch (err) {
-        return res.send({msg: err.message });
-    }
-};
+    
+    return res.send("user route")
+    
+}
 
 const signupControler = async (req,res) => {
     
