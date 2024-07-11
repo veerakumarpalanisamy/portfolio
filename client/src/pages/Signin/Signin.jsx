@@ -16,6 +16,11 @@ const Signin = () => {
     });
   };
 
+  const handlesignout = () => {
+    setUserData(undefined)
+    
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
@@ -26,9 +31,7 @@ const Signin = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data= await response.json();
-      console.log(data)
-      setUserData(data);
+   
       console.log(userData)
       navigate("/")
     } catch (err){
@@ -48,7 +51,7 @@ const Signin = () => {
         <br />
        
       </form>
-      
+      <button onClick={handlesignout}>signout</button>
       
     </div>
   );

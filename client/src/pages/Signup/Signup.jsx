@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./signup.css"
 import { useNavigate }  from "react-router-dom"
 
-const Signup = () => {
+const Signup = () => {   
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -29,6 +29,7 @@ const Signup = () => {
       });
       const data= await response.json();
       setUserData(data);
+      navigate("/signin")
     } catch (err){
       console.log(err);
       return;
@@ -50,7 +51,7 @@ const Signup = () => {
       <button onClick={() => navigate("/signin")}>
           already have an account 
         </button>
-      {userData ? <p> {userData.user.username}</p>: ""} 
+      {userData ? <p> {userData.user.username}</p>: ""}  
     </div>
   );
 };
