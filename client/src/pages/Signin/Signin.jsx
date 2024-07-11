@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import "./signup.css"
+import React, {useState} from 'react'
+import "./signin.css"
 import { useNavigate }  from "react-router-dom"
 
-const Signup = () => {
+const Signin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -20,7 +19,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const response = await fetch("http://localhost:4000/api/user/signup", {
+      const response = await fetch("http://localhost:4000/api/user/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +27,10 @@ const Signup = () => {
         body: JSON.stringify(formData),
       });
       const data= await response.json();
+      console.log(data)
       setUserData(data);
+      console.log(userData)
+      navigate("/")
     } catch (err){
       console.log(err);
       return;
@@ -37,9 +39,8 @@ const Signup = () => {
     
   return (
     <div>
-      <h1>create an account</h1>
+      <h1>login user account</h1>
       <form action="" onSubmit={handleSubmit}>
-        <input type="text" placeholder='username' name='username' id='username' onChange={handleChange}/>
         <input type="text" placeholder='email' name='email' id='email' onChange={handleChange}/>
         <input type="text" placeholder='password' name='password' id='password' onChange={handleChange}/>
         <input type="file" />
@@ -47,12 +48,12 @@ const Signup = () => {
         <br />
        
       </form>
-      <button onClick={() => navigate("/signin")}>
-          already have an account 
-        </button>
-      {userData ? <p> {userData.user.username}</p>: ""} 
+      
+      
     </div>
   );
 };
 
-export default Signup;
+
+
+export default Signin;
